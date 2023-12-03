@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (let i = 0; i < photoArray.length; i++) {
             const card = document.createElement('img');
-            photo.setAttribute('src', 'images/blank.png');
+            photo.setAttribute('src', 'images/blank.jpg');
             photo.setAttribute('data-id', i);
             photo.addEventListener('click', flipPhoto);
             grid.appendChild(photo);
@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
             photos[secondPhotoId].removeEventListener('click', flipPhoto);
             photosWon.push(photosChosen);
         } else {
-            photos[firstPhotoId].setAttribute('src', 'images/blank.png');
-            photos[secondPhotoId].setAttribute('src', 'images/blank.png');
+            photos[firstPhotoId].setAttribute('src', 'images/blank.jpg');
+            photos[secondPhotoId].setAttribute('src', 'images/blank.jpg');
         }
 
         photosChosen = [];
