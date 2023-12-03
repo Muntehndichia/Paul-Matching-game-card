@@ -1,7 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif; 
-    background-color: #11ab2a; 
-    color: rgb(52, 158, 54), 0.783); 
+    background-color: #282c34; 
+    color: #ffffff; 
     text-align: center;
     margin: 0;
     padding: 0;
@@ -23,12 +23,12 @@ h1 {
 .instructions {
     font-size: 20px;
     margin-bottom: 30px;
-    color: #3f8bd8ef;
+    color: #adbac7;
 }
 
 #game-board {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 20px;
     justify-content: center;
@@ -38,9 +38,9 @@ h1 {
 .card {
     width: 211.8px;
     height: 166.2px;
-    background-color: hsla(144, 13%, 39%, 0.893);
+    background-color: #565c6f;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(167, 106, 106, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -61,7 +61,7 @@ h1 {
 
 #start-game {
     background-color: #4caf50;
-    color: hsla(0, 0%, 100%, 0.648)0%, 100%);
+    color: white;
     padding: 12px 24px;
     border: none;
     border-radius: 5px;
