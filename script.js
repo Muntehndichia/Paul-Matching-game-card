@@ -1,31 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('#game-board');
     const startButton = document.getElementById('start-game');
-    let photosChosen = [];
-    let photosChosenId = [];
-    let photosWon = [];
+    let cardsChosen = [];
+    let cardsChosenId = [];
+    let cardsWon = [];
 
     const cardArray = [
         { name: 'card1', img: 'images/img1.png' },
         { name: 'card1', img: 'images/img1.png' },
-        { name: 'photo2', img: 'images/img2.png' },
-        { name: 'photo2', img: 'images/img2.png' },
-        { name: 'photo3', img: 'images/img3.png' },
-        { name: 'photo3', img: 'images/img3.png' },
-        { name: 'photo4', img: 'images/img4.png' },
-        { name: 'photo4', img: 'images/img4.png' },
-        { name: 'photo5', img: 'images/img5.png' },
-        { name: 'photo5', img: 'images/img5.png' },
-        { name: 'photo6', img: 'images/img6.png' },
-        { name: 'photo6', img: 'images/img6.png' },
-        { name: 'photo7', img: 'images/img7.png' },
-        { name: 'photo7', img: 'images/img7.png' },
-        { name: 'photo8', img: 'images/img8.png' },
-        { name: 'photo8', img: 'images/img8.png' },
-        { name: 'photo9', img: 'images/img9.png' },
-        { name: 'photo9', img: 'images/img9.png' },
-        { name: 'photo9', img: 'images/img10.png' },
-        { name: 'photo9', img: 'images/img10.png' },
+        { name: 'card2', img: 'images/drake.png' },
+        { name: 'card2', img: 'images/drake.png' },
+        { name: 'card3', img: 'images/fine.png' },
+        { name: 'card3', img: 'images/fine.png' },
+        { name: 'card4', img: 'images/rollsafe.png' },
+        { name: 'card4', img: 'images/rollsafe.png' },
+        { name: 'card5', img: 'images/success.png' },
+        { name: 'card5', img: 'images/success.png' },
         // ...add more pairs as needed
     ];
 
@@ -34,51 +24,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createBoard() {
-        shuffle(photoArray);
+        shuffle(cardArray);
         grid.innerHTML = '';
         cardsWon = [];
 
-        for (let i = 0; i < photoArray.length; i++) {
+        for (let i = 0; i < cardArray.length; i++) {
             const card = document.createElement('img');
-            photo.setAttribute('src', 'images/blank.jpg');
-            photo.setAttribute('data-id', i);
-            photo.addEventListener('click', flipPhoto);
-            grid.appendChild(photo);
+            card.setAttribute('src', 'images/blank.jpg');
+            card.setAttribute('data-id', i);
+            card.addEventListener('click', flipCard);
+            grid.appendChild(card);
         }
     }
 
-    function flipPhoto() {
-        let photoId = this.getAttribute('data-id');
-        if (!photosChosenId.includes(photoId)) {
-            photosChosen.push(photoArray[photoId].name);
-            photosChosenId.push(photoId);
-            this.setAttribute('src', photoArray[photoId].img);
-            if (photosChosen.length === 2) {
+    function flipCard() {
+        let cardId = this.getAttribute('data-id');
+        if (!cardsChosenId.includes(cardId)) {
+            cardsChosen.push(cardArray[cardId].name);
+            cardsChosenId.push(cardId);
+            this.setAttribute('src', cardArray[cardId].img);
+            if (cardsChosen.length === 2) {
                 setTimeout(checkForMatch, 500);
             }
         }
     }
 
     function checkForMatch() {
-        const photos = document.querySelectorAll('#game-board img');
-        const firstPhotoId = photosChosenId[0];
-        const secondPhotoId = photosChosenId[1];
+        const cards = document.querySelectorAll('#game-board img');
+        const firstCardId = cardsChosenId[0];
+        const secondCardId = cardsChosenId[1];
 
-        if (photosChosen[0] === photosChosen[1] && firstPhotoId !== secondPhotoId) {
-            photos[firstPhotoId].style.visibility = 'hidden';
-            photos[secondPhotoId].style.visibility = 'hidden';
-            photos[firstPhotoId].removeEventListener('click', flipPhoto);
-            photos[secondPhotoId].removeEventListener('click', flipPhoto);
-            photosWon.push(photosChosen);
+        if (cardsChosen[0] === cardsChosen[1] && firstCardId !== secondCardId) {
+            cards[firstCardId].style.visibility = 'hidden';
+            cards[secondCardId].style.visibility = 'hidden';
+            cards[firstCardId].removeEventListener('click', flipCard);
+            cards[secondCardId].removeEventListener('click', flipCard);
+            cardsWon.push(cardsChosen);
         } else {
-            photos[firstPhotoId].setAttribute('src', 'images/blank.jpg');
-            photos[secondPhotoId].setAttribute('src', 'images/blank.jpg');
+            cards[firstCardId].setAttribute('src', 'images/blank.jpg');
+            cards[secondCardId].setAttribute('src', 'images/blank.jpg');
         }
 
-        photosChosen = [];
-        photosChosenId = [];
+        cardsChosen = [];
+        cardsChosenId = [];
 
-        if (photosWon.length === photoArray.length / 2) {
+        if (cardsWon.length === cardArray.length / 2) {
             alert('Congratulations! You found them all!');
         }
     }
